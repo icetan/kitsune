@@ -22,10 +22,11 @@
   "devDependencies": {
     "tap": "*",
     "jsdom": "*",
-    "browserify": "*"
+    "browserify": "*",
+    "uglify-js": "*"
   },
   "scripts": {
-    "build": "browserify index.js > kitsune.js",
+    "build": "browserify index.js > kitsune.js && uglifyjs < kitsune.js > kitsune.min.js",
     "test": "node_modules/.bin/tap test/"
   },
   "files": [
