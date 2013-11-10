@@ -1,16 +1,16 @@
 {
-  "name": "vmvvm",
-  "version": "0.5.0",
-  "description": "Vixen driven MVVM.",
+  "name": "kitsune",
+  "version": "0.0.0",
+  "description": "Minimalistic lib to structure one-page browser apps.",
   "author": "Christopher Fredén <c.freden@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/icetan/vmvvm.git"
+    "url": "https://github.com/icetan/kitsune.git"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://raw.github.com/icetan/vmvvm/master/LICENSE"
+      "url": "https://raw.github.com/icetan/kitsune/master/LICENSE"
     }
   ],
   "engine": {
@@ -21,9 +21,11 @@
   },
   "devDependencies": {
     "tap": "*",
-    "jsdom": "*"
+    "jsdom": "*",
+    "browserify": "*"
   },
   "scripts": {
+    "install": "browserify index.js > kitsune.js",
     "test": "node_modules/.bin/tap test/"
   },
   "files": [
