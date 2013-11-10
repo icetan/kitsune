@@ -105,3 +105,14 @@ test('same model object returned as given', function(t) {
   });
   t.plan(1);
 });
+
+test('should render view without callback', function(t) {
+  jsdom.env('<html><body>{{a}} och {{b}}</body></html>', [], function(err, window) {
+    var model = { a:1, b:2 },
+        el = window.document.body;
+    view.window = window;
+    view({ model:model, el:el });
+    t.equal(el.textContent, '1 och 2');
+  });
+  t.plan(1);
+});
