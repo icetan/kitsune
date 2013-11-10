@@ -1,9 +1,7 @@
-[![NodeJS build status](https://secure.travis-ci.org/icetan/vmvvm.png)](http://travis-ci.org/icetan/vmvvm)
+[![NodeJS build status](https://secure.travis-ci.org/icetan/kitsune.png)](http://travis-ci.org/icetan/kitsune)
 
-Vixen MVVM
-==========
+Kitsune
+=======
 
-A collections of small utils that together create a pwoerfull MVVM like
-structure for your application.
-
-
+A collections of small utils that together create a pwoerfull structure for
+your application.
