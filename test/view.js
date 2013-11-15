@@ -116,3 +116,30 @@ test('should render view without callback', function(t) {
   });
   t.plan(1);
 });
+
+test('should attach el once to parent', function(t) {
+  t.plan(5);
+  jsdom.env('<html><body>Blorg</body></html>', [], function(err, window) {
+    var model = { a:'lad', b:'ida' },
+        parent = window.document.body,
+        div = window.document.createElement('div'),
+        el;
+    div.innerHTML = 'lol'
+    view.window = window;
+    t.equal(parent.textContent, 'Blorg');
+    view({
+      model: model,
+      parent: parent,
+      path: require.resolve('./data/view-template.html')
+    }, function(err, v) {
+      el = v.el;
+      parent.appendChild(div);
+      view(v, function(err, v) {
+        t.equal(parent.textContent, 'ladida\nlol');
+        t.equal(el, v.el);
+        t.equal(el, parent.children[0]);
+        t.equal(div, parent.children[1]);
+      });
+    });
+  });
+});
