@@ -30,6 +30,7 @@ test('should create an empty element of type specified as first param', function
 });
 
 test('should create an empty element of type specified with named params', function(t) {
+  t.plan(6);
   jsdom.env('<html><body></body></html>', [], function(err, window) {
     view.window = window;
     var div = window.document.createElement('div');
@@ -37,6 +38,8 @@ test('should create an empty element of type specified with named params', funct
     view({el:div}, function(err, v) {
       t.equal(v.el, div);
       t.equal(v.el.textContent, 'lol rofl');
+    }, function() {
+      t.ok(true);
     });
     view({el:'span', html:'hej på dig'}, function(err, v) {
       t.ok(v.el instanceof window.HTMLElement);
@@ -44,7 +47,6 @@ test('should create an empty element of type specified with named params', funct
       t.equal(v.el.textContent, 'hej på dig');
     });
   });
-  t.plan(5);
 });
 
 test('should extend view model with model param', function(t) {
@@ -140,6 +142,28 @@ test('should attach el once to parent', function(t) {
         t.equal(el, parent.children[0]);
         t.equal(div, parent.children[1]);
       });
+    });
+  });
+});
+
+test('should only parse el once with vixen', function(t) {
+  var c = 0;
+  t.plan(3);
+  jsdom.env('<html><body>Blorg</body></html>', [], function(err, window) {
+    var model = { a:'lad', b:'ida' },
+        parent = window.document.body,
+        v = { path:require.resolve('./data/view-template.html') };
+    view.window = window;
+    v.parent = parent;
+    view(v, function(err, v) {
+      t.equal(c++, 2);
+    }, function(err, v) {
+      t.equal(c++, 1);
+    });
+    view(v, function(err, v) {
+      t.equal(c++, 0);
+    }, function(err, v) {
+      t.ok(false);
     });
   });
 });
