@@ -17,7 +17,7 @@
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "vixen": "~2.1"
+    "vixen": "~2"
   },
   "devDependencies": {
     "tap": "*",
