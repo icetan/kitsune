@@ -1,6 +1,6 @@
 {
   "name": "kitsune",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Minimalistic lib to structure one-page browser apps.",
   "author": "Christopher Fredén <c.freden@gmail.com>",
   "repository": {
